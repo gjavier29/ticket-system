@@ -7,20 +7,39 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import './Dashboard.css'
-
+import "./Dashboard.css";
 
 const { Header, Sider, Content } = Layout;
 type Props = {};
 
 const Dashboard: React.FC = (props: Props) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [collapsedLayout, setCollapsedLayout] = useState(200);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  function collapseHandler() {
+    setCollapsed(!collapsed);
+    if (collapsed) {
+        setCollapsedLayout(200);
+    } else {
+        setCollapsedLayout(80);
+    }
+  }
   return (
-    <Layout className="height-100">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider
+        style={{
+          overflow: "auto",
+          height: "100vh",
+          position: "fixed",
+          left: 0,
+        }}
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+      >
         <div className="logo" />
         <Menu
           theme="dark"
@@ -42,36 +61,39 @@ const Dashboard: React.FC = (props: Props) => {
               icon: <UploadOutlined />,
               label: "nav 3",
             },
-            {
-              key: "4",
-              icon: <UploadOutlined />,
-              label: "nav 4",
-            },
           ]}
         />
       </Sider>
 
-      <Layout className="site-layout">
+      <Layout className="site-layout" style={{ marginLeft: collapsedLayout }}>
         <Header style={{ padding: 0, background: colorBgContainer }}>
-          <div className="">
-            {React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: () => setCollapsed(!collapsed),
-              }
-            )}
-          </div>
+          {/* <div className="w-full h-full flex  items-center justify-between w-full px-4"> */}
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: "trigger",
+              onClick: () => collapseHandler(),
+            }
+          )}
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}
-        >
-          Content
+        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+          <div
+            style={{
+              padding: 24,
+              textAlign: "center",
+            }}
+          >
+            <p>long content</p>
+            {
+              // indicates very long content
+              Array.from({ length: 100 }, (_, index) => (
+                <React.Fragment key={index}>
+                  {index % 20 === 0 && index ? "more" : "..."}
+                  <br />
+                </React.Fragment>
+              ))
+            }
+          </div>
         </Content>
       </Layout>
     </Layout>

@@ -1,5 +1,5 @@
-// import './App.css';
-import { Dashboard, Ticket } from './screens/ImportHandler'
+import "./App.css";
+import { Dashboard, Ticket } from "./screens/ImportHandler";
 
 function App() {
   return (
