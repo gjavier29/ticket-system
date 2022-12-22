@@ -8,7 +8,10 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import "./Dashboard.css";
-// import type { SpaceSize } from "antd/es/space";
+
+// import { SidebarLogo } from '../assets'
+
+// import { SidebarLogo } from '../assets'
 
 const { Header, Sider, Content } = Layout;
 type Props = {};
@@ -25,8 +28,8 @@ const Dashboard: React.FC = (props: Props) => {
     if (collapsed) {
       setCollapsedLayout(200);
     } else {
-      setCollapsedLayout(80);
-    }
+        setCollapsedLayout(80);
+      }
   }
 
   return (
@@ -37,14 +40,15 @@ const Dashboard: React.FC = (props: Props) => {
           height: "100vh",
           position: "fixed",
           left: 0,
+          background: colorBgContainer
         }}
         trigger={null}
         collapsible
         collapsed={collapsed}
       >
-        <div className="logo" />
+        {/* <div className="logo"><img src={SidebarLogo} alt="" /></div> */}
         <Menu
-          theme="dark"
+          // theme="dark"
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={[
