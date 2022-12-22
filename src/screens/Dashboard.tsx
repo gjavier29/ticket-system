@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import "./Dashboard.css";
+// import type { SpaceSize } from "antd/es/space";
 
 const { Header, Sider, Content } = Layout;
 type Props = {};
@@ -22,11 +23,12 @@ const Dashboard: React.FC = (props: Props) => {
   function collapseHandler() {
     setCollapsed(!collapsed);
     if (collapsed) {
-        setCollapsedLayout(200);
+      setCollapsedLayout(200);
     } else {
-        setCollapsedLayout(80);
+      setCollapsedLayout(80);
     }
   }
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -66,8 +68,7 @@ const Dashboard: React.FC = (props: Props) => {
       </Sider>
 
       <Layout className="site-layout" style={{ marginLeft: collapsedLayout }}>
-        <Header style={{ padding: 0, background: colorBgContainer }}>
-          {/* <div className="w-full h-full flex  items-center justify-between w-full px-4"> */}
+        <Header style={{ padding: "0px 25px", background: colorBgContainer }}>
           {React.createElement(
             collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
             {
