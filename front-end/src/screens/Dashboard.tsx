@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import "./Dashboard.css";
+import { isArrowFunction } from "typescript";
 
 // import { SidebarLogo } from '../assets'
 
@@ -31,6 +32,7 @@ const Dashboard: React.FC = (props: Props) => {
         setCollapsedLayout(80);
       }
   }
+
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -69,6 +71,7 @@ const Dashboard: React.FC = (props: Props) => {
             },
           ]}
         />
+        sasa
       </Sider>
 
       <Layout className="site-layout" style={{ marginLeft: collapsedLayout }}>
