@@ -10,6 +10,11 @@ import java.util.List;
 
 @RestController
 public class ProductController {
+
+    @RequestMapping("/welcome")
+    public String welcomePage() {
+        return "Welcome to Yawin Tutor";
+    }
     @Autowired
     private ProductService service;
 
@@ -18,10 +23,10 @@ public class ProductController {
         return service.saveProduct(product);
     }
 
-    @PostMapping("/addProducts")
-    public List<Product> addProduct(@RequestBody List<Product> products) {
-        return (List<Product>) service.saveProducts(products);
-    }
+//    @PostMapping("/addProducts")
+//    public List<Product> addProduct(@RequestBody List<Product> products) {
+//        return (List<Product>) service.saveProducts(products);
+//    }
 
     @GetMapping("/products")
     public List<Product> findAllProducts() {
