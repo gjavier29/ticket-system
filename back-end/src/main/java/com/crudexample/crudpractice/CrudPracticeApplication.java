@@ -1,13 +1,13 @@
-package com.luv2code.springlibrarypractice;
+package com.crudexample.crudpractice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringLibraryPracticeApplication {
+public class CrudPracticeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringLibraryPracticeApplication.class, args);
+		SpringApplication.run(CrudPracticeApplication.class, args);
 	}
 
 }
