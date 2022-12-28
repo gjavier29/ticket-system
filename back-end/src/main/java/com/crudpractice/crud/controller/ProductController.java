@@ -60,7 +60,6 @@ public class ProductController {
         try {
             List<Product> prod = service.getProducts();
             String message = "Product List.";
-            int count =
             return ResponseHandler.generateResponse(message, HttpStatus.OK, prod);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
