@@ -18,11 +18,12 @@ public class ProductService {
     }
 
     public Product saveProduct(Product product){
+//        return repository.save(product);
         return repository.save(product);
     }
 
-    public Product saveProducts(List<Product> products) {
-        return (Product) repository.saveAll(products);
+    public List<Product> saveProducts(List<Product> products) {
+        return repository.saveAll(products);
     }
 
     public List<Product> getProducts() {

@@ -6,10 +6,13 @@ import com.crudpractice.crud.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+//@RequestMapping(value = "/api/" , method = "RequestMethod.POST, consumes = { \"multipart/form-data\" }")
 @RequestMapping("api")
+//@RequestMapping(value = "/api/" , method = RequestMethod.POST, consumes = { "multipart/form-data" })
 public class ProductController {
 
     @RequestMapping("/")
@@ -19,24 +22,28 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @PostMapping("/addProduct")
+    @PostMapping("/add-product")
     public Product addProduct(@RequestBody Product product) {
         return service.saveProduct(product);
     }
 
-    @PostMapping("/addProducts")
+    @PostMapping("/add-products")
     public List<Product> addProduct(@RequestBody List<Product> products) {
         return (List<Product>) service.saveProducts(products);
     }
 
-    @GetMapping("/hello-world")
-    public List<Product> helloWorld() {
-        return service.helloWorld();
+    @GetMapping("/hello-world/{id}")
+    public int helloWorld(@PathVariable int id) {
+//        return service.helloWorld();
+        return id;
     }
-
     @GetMapping("/products")
     public List<Product> findAllProducts() {
-        return service.getProducts();
+//        List<JSONPObject> entities = new ArrayList<JSONPObject>();
+//        JSONObject entity = new JSONObject();
+        List<Product> prod = service.getProducts();
+
+        return prod;
     }
 
     @GetMapping("/product/{id}")
