@@ -10,15 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-//@RequestMapping(value = "/api/" , method = "RequestMethod.POST, consumes = { \"multipart/form-data\" }")
 @RequestMapping("api")
-//@RequestMapping(value = "/api/" , method = RequestMethod.POST, consumes = { "multipart/form-data" })
 public class ProductController {
-
     @RequestMapping("/")
     public String welcomePage() {
         return "Welcome to Yawin Tutor";
     }
+
     @Autowired
     private ProductService service;
 
@@ -37,6 +35,7 @@ public class ProductController {
 //        return service.helloWorld();
         return id;
     }
+
     @GetMapping("/products")
     public List<Product> findAllProducts() {
 //        List<JSONPObject> entities = new ArrayList<JSONPObject>();
@@ -51,18 +50,21 @@ public class ProductController {
         return service.getProductById(id);
     }
 
-    @GetMapping("/product/{name}")
+    @GetMapping("/product-name/{name}")
     public Product findProductByName(@PathVariable String name) {
         return service.getProductByName(name);
     }
-    @PutMapping("/product/{name}")
-    public Product updateProduct(@RequestBody Product product) {
-        return service.updateProduct(product);
-    }
-    @DeleteMapping("/delete/{id}")
-    public String deleteProduct(int id) {
-        return service.deleteProduct(id);
+
+    @PutMapping("/product/{id}")
+    public Product updateProduct(@PathVariable int id, @RequestBody Product product) {
+//        return id;
+//        return id + product;
+        return service.updateProduct(id, product);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        return service.deleteProduct(id);
+    }
 
 }
