@@ -7,12 +7,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import "./Dashboard.css";
-import { isArrowFunction } from "typescript";
-
-// import { SidebarLogo } from '../assets'
-
-// import { SidebarLogo } from '../assets'
+import { CrudForm } from '../components/ImportHandler'
 
 const { Header, Sider, Content } = Layout;
 type Props = {};
@@ -20,6 +15,7 @@ type Props = {};
 const Dashboard: React.FC = (props: Props) => {
   const [collapsed, setCollapsed] = useState(false);
   const [collapsedLayout, setCollapsedLayout] = useState(200);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -33,7 +29,6 @@ const Dashboard: React.FC = (props: Props) => {
       }
   }
 
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider
@@ -42,15 +37,13 @@ const Dashboard: React.FC = (props: Props) => {
           height: "100vh",
           position: "fixed",
           left: 0,
-          background: colorBgContainer
         }}
         trigger={null}
         collapsible
         collapsed={collapsed}
       >
-        {/* <div className="logo"><img src={SidebarLogo} alt="" /></div> */}
         <Menu
-          // theme="dark"
+          theme="dark"
           mode="inline"
           defaultSelectedKeys={["1"]}
           items={[
@@ -71,9 +64,7 @@ const Dashboard: React.FC = (props: Props) => {
             },
           ]}
         />
-        sasa
       </Sider>
-
       <Layout className="site-layout" style={{ marginLeft: collapsedLayout }}>
         <Header style={{ padding: "0px 25px", background: colorBgContainer }}>
           {React.createElement(
@@ -85,23 +76,7 @@ const Dashboard: React.FC = (props: Props) => {
           )}
         </Header>
         <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-          <div
-            style={{
-              padding: 24,
-              textAlign: "center",
-            }}
-          >
-            <p>long content</p>
-            {
-              // indicates very long content
-              Array.from({ length: 100 }, (_, index) => (
-                <React.Fragment key={index}>
-                  {index % 20 === 0 && index ? "more" : "..."}
-                  <br />
-                </React.Fragment>
-              ))
-            }
-          </div>
+          <CrudForm />
         </Content>
       </Layout>
     </Layout>
