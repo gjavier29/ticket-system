@@ -70,7 +70,12 @@ public class ProductController {
     public ResponseEntity<Object> findProductById(@PathVariable int id) {
         try {
             Product prod = service.getProductById(id);
-            String message = "Product Details.";
+            String message;
+            if (prod != null) {
+                message = "Product Details.";
+            } else {
+                message = "Product not found.";
+            }
             return ResponseHandler.generateResponse(message, HttpStatus.OK, prod);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
@@ -81,7 +86,12 @@ public class ProductController {
     public ResponseEntity<Object> findProductByName(@PathVariable String name) {
         try {
             Product prod = service.getProductByName(name);
-            String message = "Product Details.";
+            String message;
+            if (prod != null) {
+                message = "Product Details.";
+            } else {
+                message = "Product not found.";
+            }
             return ResponseHandler.generateResponse(message, HttpStatus.OK, prod);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
@@ -92,7 +102,12 @@ public class ProductController {
     public ResponseEntity<Object> updateProduct(@PathVariable int id, @RequestBody Product product) {
         try {
             Product prod = service.updateProduct(id, product);
-            String message = "Product Details.";
+            String message;
+            if (prod != null) {
+                message = "Product Details.";
+            } else {
+                message = "Product not found.";
+            }
             return ResponseHandler.generateResponse(message, HttpStatus.OK, prod);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);

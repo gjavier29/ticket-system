@@ -8,9 +8,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ResponseHandler {
+
     public static ResponseEntity<Object> generateResponse(String message, HttpStatus status, Object responseObj){
         Map<String, Object> map = new LinkedHashMap<String, Object>();
-
         map.put("message", message);
         map.put("status", status.value());
         map.put("data", responseObj);
