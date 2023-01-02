@@ -1,10 +1,10 @@
-package com.crudpractice.crud;
+package com.javier.ticketsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudApplicationTests {
+class TicketSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
