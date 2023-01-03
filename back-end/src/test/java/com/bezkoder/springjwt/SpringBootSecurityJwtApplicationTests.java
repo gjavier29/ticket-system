@@ -1,13 +1,13 @@
-package com.javier.ticketsystem;
+package com.bezkoder.springjwt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TicketSystemApplicationTests {
+public class SpringBootSecurityJwtApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }
