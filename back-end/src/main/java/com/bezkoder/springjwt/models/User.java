@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
       @UniqueConstraint(columnNames = "username"),
       @UniqueConstraint(columnNames = "email") 
     })
-public class User {
+public class  User extends Auditable{
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -37,6 +37,10 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
+
+//  @OneToOne(cascade = CascadeType.ALL)
+//  @JoinColumn(name = "user_info_id")
+//  private UserInfo userInfo;
 
   public User() {
   }

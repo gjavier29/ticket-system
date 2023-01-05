@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.bezkoder.springjwt.models.UserInfo;
+import com.bezkoder.springjwt.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,6 +43,9 @@ public class AuthController {
 
   @Autowired
   UserRepository userRepository;
+
+  @Autowired
+  UserInfoRepository userInfoRepository;
 
   @Autowired
   RoleRepository roleRepository;
@@ -91,6 +96,8 @@ public class AuthController {
                signUpRequest.getEmail(),
                encoder.encode(signUpRequest.getPassword()));
 
+    UserInfo userInfo = new UserInfo(null,signUpRequest.getFirstname(), signUpRequest.getLastname(), signUpRequest.getAddress(), user);
+
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();
 
@@ -122,6 +129,7 @@ public class AuthController {
     }
 
     user.setRoles(roles);
+    userInfoRepository.save(userInfo);
     userRepository.save(user);
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
