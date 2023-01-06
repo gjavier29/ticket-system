@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Layout, Menu, theme, Breadcrumb } from 'antd';
+import { NavItems } from '../components'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -30,62 +31,43 @@ const items: MenuProps['items'] = [
 }));
 
 const App: React.FC = () => {
+  
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-const [collapsed, setCollapsed] = useState(false);
+
+
   return (
     
     <Layout hasSider>
       <Sider
         collapsible collapsed={collapsed} 
         onCollapse={(value) => setCollapsed(value)}
-        style={{
-          // overflow: 'auto',
-          // height: '100vh',
-          // position: 'sticky',
-          // width: "500px"
-          // left: 0,
-          // top: 0,
-          // bottom: 0,
-        }}
+        style={{ width: 256 }}
       >
         <div className="sticky-sidebar">
-          {/* <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)' }} /> */}
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
+          {/* <div style={{ height: 32, margin: "0px 25", background: 'rgba(255, 255, 255, 0.2)' }} /> */}
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items}  />
         </div>
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: 0, background: colorBgContainer}} ></Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+          <div style={{ padding: 24, minHeight: "100vh", background: colorBgContainer }}>
+            <NavItems />
+          </div>
+          <div style={{ padding: 24, minHeight: "100vh", background: colorBgContainer }}>
             Bill is a cat.
           </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-            <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
+   
+          
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
