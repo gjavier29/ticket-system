@@ -1,97 +1,96 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
+  AppstoreOutlined,
+  BarChartOutlined,
+  CloudOutlined,
+  ShopOutlined,
   TeamOutlined,
+  UploadOutlined,
   UserOutlined,
-} from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import type { MenuProps } from 'antd';
+import { Layout, Menu, theme, Breadcrumb } from 'antd';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-type MenuItem = Required<MenuProps>["items"][number];
+const items: MenuProps['items'] = [
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  BarChartOutlined,
+  CloudOutlined,
+  AppstoreOutlined,
+  TeamOutlined,
+  ShopOutlined,
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `nav ${index + 1}`,
+}));
 
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
-];
-
-const Home: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+const [collapsed, setCollapsed] = useState(false);
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    
+    <Layout hasSider>
       <Sider
-        collapsible
-        collapsed={collapsed}
+        collapsible collapsed={collapsed} 
         onCollapse={(value) => setCollapsed(value)}
+        style={{
+          // overflow: 'auto',
+          // height: '100vh',
+          // position: 'sticky',
+          // width: "500px"
+          // left: 0,
+          // top: 0,
+          // bottom: 0,
+        }}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
-          }}
-        />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
+        <div className="sticky-sidebar">
+          {/* <div style={{ height: 32, background: 'rgba(255, 255, 255, 0.2)' }} /> */}
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items} />
+        </div>
       </Sider>
       <Layout className="site-layout">
         <Header style={{ padding: 0, background: colorBgContainer }} />
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
+        <Content style={{ margin: '0 16px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-            }}
-          >
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+            <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
+            Bill is a cat.
+          </div>
+          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
             Bill is a cat.
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
     </Layout>
   );
 };
 
-export default Home;
+export default App;
