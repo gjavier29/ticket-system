@@ -9,7 +9,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { MenuProps, Space, Layout, Menu, theme, Breadcrumb  } from 'antd';
+import { MenuProps, Layout, Menu, theme, Breadcrumb  } from 'antd';
 import { NavItems, DarkModeTutorial } from '../components'
 
 const { Header, Content, Footer, Sider } = Layout;
