@@ -9,9 +9,8 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Layout, Menu, theme, Breadcrumb } from 'antd';
-import { NavItems } from '../components'
+import { MenuProps, Space, Layout, Menu, theme, Breadcrumb, Typography  } from 'antd';
+import { NavItems, DarkModeTutorial } from '../components'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -36,23 +35,19 @@ const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  const { Title } = Typography;
 
   return (
-    
     <Layout hasSider>
-      <Sider
-        collapsible collapsed={collapsed} 
-        onCollapse={(value) => setCollapsed(value)}
-        style={{ width: 256 }}
-      >
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} style={{ width: "500px" }}>
         <div className="sticky-sidebar">
-          {/* <div style={{ height: 32, margin: "0px 25", background: 'rgba(255, 255, 255, 0.2)' }} /> */}
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={items}  />
         </div>
       </Sider>
       <Layout className="site-layout">
-        <Header style={{ padding: 0, background: colorBgContainer}} ></Header>
+        <Header style={{ padding: 0, background: colorBgContainer}} >
+          <NavItems />
+        </Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -61,13 +56,11 @@ const App: React.FC = () => {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ padding: 24, minHeight: "100vh", background: colorBgContainer }}>
-            <NavItems />
+            <DarkModeTutorial />
           </div>
           <div style={{ padding: 24, minHeight: "100vh", background: colorBgContainer }}>
             Bill is a cat.
           </div>
-   
-          
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>

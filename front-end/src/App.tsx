@@ -7,7 +7,6 @@ import { Home } from './screens'
 function App() {
   return (
     <div className="App">
-      {/* <div className="">sample</div> */}
       <Home />
     </div>
   );
