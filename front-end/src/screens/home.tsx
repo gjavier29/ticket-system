@@ -9,7 +9,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { MenuProps, Space, Layout, Menu, theme, Breadcrumb, Typography  } from 'antd';
+import { MenuProps, Space, Layout, Menu, theme, Breadcrumb  } from 'antd';
 import { NavItems, DarkModeTutorial } from '../components'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -35,7 +35,6 @@ const App: React.FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const { Title } = Typography;
 
   return (
     <Layout hasSider>
